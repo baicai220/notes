@@ -63,21 +63,21 @@
           crossChapterText: true,
         },
 
-        //在github上编辑
-        plugins: [
-          EditOnGithubPlugin.create(docBase, docEditBase, title),
-          EditOnGithubPlugin.create(
-            "https://github.com/docsifyjs/docsify/blob/master/docs/",
-            null,
-            function (file) {
-              if (file.indexOf("en") === -1) {
-                return "编辑";
-              } else {
-                return "edit on git";
-              }
-            }
-          ),
-        ],
+        // //在github上编辑
+        // plugins: [
+        //   EditOnGithubPlugin.create(docBase, docEditBase, title),
+        //   EditOnGithubPlugin.create(
+        //     "https://github.com/docsifyjs/docsify/blob/master/docs/",
+        //     null,
+        //     function (file) {
+        //       if (file.indexOf("en") === -1) {
+        //         return "编辑";
+        //       } else {
+        //         return "edit on git";
+        //       }
+        //     }
+        //   ),
+        // ],
       };
     </script>
     <!-- Docsify v4 -->
