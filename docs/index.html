@@ -63,21 +63,21 @@
           crossChapterText: true,
         },
 
-        // //在github上编辑
-        // plugins: [
-        //   EditOnGithubPlugin.create(docBase, docEditBase, title),
-        //   EditOnGithubPlugin.create(
-        //     "https://github.com/docsifyjs/docsify/blob/master/docs/",
-        //     null,
-        //     function (file) {
-        //       if (file.indexOf("en") === -1) {
-        //         return "编辑";
-        //       } else {
-        //         return "edit on git";
-        //       }
-        //     }
-        //   ),
-        // ],
+        //在github上编辑
+        plugins: [
+          // EditOnGithubPlugin.create(docBase, docEditBase, title),
+          EditOnGithubPlugin.create(
+            "https://github.com/docsifyjs/docsify/blob/master/docs/",
+            null,
+            function (file) {
+              if (file.indexOf("en") === -1) {
+                return "编辑";
+              } else {
+                return "edit on git";
+              }
+            }
+          ),
+        ],
       };
     </script>
     <!-- Docsify v4 -->
@@ -130,6 +130,9 @@
 
     <!-- 在github上打开对用的页面 -->
     <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
+
+     <!-- 图片放大缩小支持 -->
+     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 
     <!-- 代码高亮 -->
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
