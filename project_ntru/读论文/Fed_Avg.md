@@ -68,9 +68,3 @@ for 每个本地的epoch $i (1 \sim E)$ do
 
 
 
-## 实验
-
-```java
-int a
-```
-

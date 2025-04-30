@@ -1,19 +1,10 @@
----
-title: img/Redis
-tags:
-  - img/Redis
-categories:
-  - img/Redis
-date: 2025-01-31 16:44:21
----
-
-# img/Redis基础
+# Redis基础
 
 ## SQL & NoSQL
 
 ![image.png](img/Redis/1738325355742-14b411bb-bac7-4d75-a71f-786ce4f28c4d.webp)
 
-## img/Redis安装
+## Redis安装
 
 ### 安装
 
@@ -93,7 +84,7 @@ drwxr-xr-x  9 baicai baicai  4096 Oct  4  2021 utils/
 bind 0.0.0.0
 # 守护进程，修改为yes后即可后台运行
 daemonize yes 
-# 密码，设置后访问img/Redis必须输入密码
+# 密码，设置后访问Redis必须输入密码
 requirepass 123456
 ```
 
@@ -112,7 +103,7 @@ maxmemory 512mb
 logfile "redis.log"
 ```
 
-启动img/Redis：
+启动Redis：
 
 ```shell
 # 进入redis安装目录 
@@ -123,7 +114,7 @@ redis-server redis.conf
 停止服务：
 
 ```shell
-# 利用redis-cli来执行 shutdown 命令，即可停止 img/Redis 服务，
+# 利用redis-cli来执行 shutdown 命令，即可停止 Redis 服务，
 # 因为之前配置了密码，因此需要通过 -u 来指定密码
 redis-cli -u 123456 shutdown
 ```
@@ -181,7 +172,7 @@ systemctl enable redis
 
 #### 命令行客户端
 
-img/Redis安装完成后就自带了命令行客户端：redis-cli
+Redis安装完成后就自带了命令行客户端：redis-cli
 
 ```sh
 redis-cli [options] [commonds]
@@ -193,7 +184,7 @@ redis-cli [options] [commonds]
 - `-p 6379`：指定要连接的redis节点的端口，默认是6379
 - `-a 123456`：指定redis的访问密码 。也可以不指定密码，在进入控制台后通过`auth 123456`命令来指定密码。
 
-commonds就是img/Redis的操作命令，如：
+commonds就是Redis的操作命令，如：
 
 - `ping`：与redis服务端做心跳测试，服务端正常会返回`pong`
 - `select 0~15之间数字`：选择仓库
@@ -226,13 +217,13 @@ PONG
 
 ![image-20250201121114884](img/Redis/image-20250201121114884.png)
 
-img/Redis默认有16个仓库，编号从0至15.  通过配置文件可以设置仓库数量，但是不超过16，并且不能自定义仓库名称。
+Redis默认有16个仓库，编号从0至15.  通过配置文件可以设置仓库数量，但是不超过16，并且不能自定义仓库名称。
 
 
 
-## img/Redis常用命令
+## Redis常用命令
 
-### img/Redis数据结构
+### Redis数据结构
 
 ![image-20250131214414646](img/Redis/image-20250131214414646.png)
 
@@ -297,7 +288,7 @@ OK
 
 ### String类型
 
-String字符串类型，是img/Redis中最简单的存储类型。
+String字符串类型，是Redis中最简单的存储类型。
 
 其value是字符串，不过根据字符串的格式不同，又可以分为3类：
 
@@ -404,7 +395,7 @@ OK
 
 如何区分不同类型的key？
 
-> redis的key允许有多个单词形成层级结构，多个单词之间用 `:` 隔开，如`项目名:业务名:类型:id`。这个按需修改词条。
+> Redis的key允许有多个单词形成层级结构，多个单词之间用 `:` 隔开，如`项目名:业务名:类型:id`。这个按需修改词条。
 >
 > 如果Value是一个Java对象，则可以将对象序列化为JSON字符串后存储：
 >
@@ -541,7 +532,7 @@ List的常见命令有：
 
 ### Set类型
 
-img/Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null的HashMap。因为也是一个hash表，因此与HashSet特征类似：
+Redis的Set结构与Java中的HashSet类似，可以看做是一个value为null的HashMap。因为也是一个hash表，因此与HashSet特征类似：
 
 + 无序
 + 元素不可重复
@@ -588,7 +579,7 @@ String的常见命令有：
 
 > Set命令练习：
 >
-> 将下列数据用img/Redis的Set集合来存储：
+> 将下列数据用Redis的Set集合来存储：
 >
 > + 张三的好友有：李四、王五、赵六
 > + 李四的好友有：王五、麻子、二狗
@@ -636,7 +627,7 @@ String的常见命令有：
 
 ### SortedSet类型
 
-img/Redis的SortedSet是一个可排序的set集合，与Java中的TreeSet有些类似，但底层数据结构却差别很大。
+Redis的SortedSet是一个可排序的set集合，与Java中的TreeSet有些类似，但底层数据结构却差别很大。
 
 SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表（SkipList）加 hash表。
 
@@ -662,7 +653,7 @@ SortedSet的常见命令有：
 
 > SortedSet命令练习：
 >
-> 将班级的下列学生得分存入img/Redis的SortedSet中：Jack 85, Lucy 89, Rose 82, Tom 95, Jerry 78, Amy 92, Miles 76，并实现下列功能：
+> 将班级的下列学生得分存入Redis的SortedSet中：Jack 85, Lucy 89, Rose 82, Tom 95, Jerry 78, Amy 92, Miles 76，并实现下列功能：
 >
 > 1. 删除Tom同学
 > 2. 获取Amy同学的分数
@@ -699,13 +690,13 @@ SortedSet的常见命令有：
 
 
 
-## img/Redis的Java客户端
+## Redis的Java客户端
 
-Jedis以img/Redis命令作为方法名称，学习成本低，简单实用。但是Jedis实例是线程不安全的，多线程环境下需要基于连接池来使用。
+Jedis以Redis命令作为方法名称，学习成本低，简单实用。但是Jedis实例是线程不安全的，多线程环境下需要基于连接池来使用。
 
-Lettuce是基于Netty实现的，支持同步、异步和响应式编程方式，并且是线程安全的。支持img/Redis的哨兵模式、集群模式和管道模式。Spring默认支持这种。
+Lettuce是基于Netty实现的，支持同步、异步和响应式编程方式，并且是线程安全的。支持Redis的哨兵模式、集群模式和管道模式。Spring默认支持这种。
 
-img/Redisson是一个基于img/Redis实现的分布式、可伸缩的Java数据结构集合。包含了诸如Map、Queue、Lock、 Semaphore、AtomicLong等强大功能
+Redisson是一个基于Redis实现的分布式、可伸缩的Java数据结构集合。包含了诸如Map、Queue、Lock、 Semaphore、AtomicLong等强大功能
 
 .......
 
@@ -723,7 +714,7 @@ img/Redisson是一个基于img/Redis实现的分布式、可伸缩的Java数据�
 
 + 创建Jedis对象，建立连接
 
-+ 使用Jedis，方法名与img/Redis命令一致
++ 使用Jedis，方法名与Redis命令一致
 
 + 释放资源
 
@@ -826,21 +817,21 @@ public class JedisTest {
 }
 ```
 
-### SpringDataimg/Redis
+### SpringDataRedis
 
-SpringData是Spring中数据操作的模块，包含对各种数据库的集成，其中对img/Redis的集成模块就叫做[SpringDataimg/Redis](https://spring.io/projects/spring-data-redis)
+SpringData是Spring中数据操作的模块，包含对各种数据库的集成，其中对Redis的集成模块就叫做[SpringDataRedis](https://spring.io/projects/spring-data-redis)
 
-+ 提供了对不同img/Redis客户端的整合（Lettuce和Jedis）
-+ 提供了img/RedisTemplate统一API来操作img/Redis
-+ 支持img/Redis的发布订阅模型
-+ 支持img/Redis哨兵和img/Redis集群
++ 提供了对不同redis客户端的整合（Lettuce和Jedis）
++ 提供了RedisTemplate统一API来操作redis
++ 支持Redis的发布订阅模型
++ 支持Redis哨兵和Redis集群
 + 支持基于Lettuce的响应式编程
 + 支持基于JDK、JSON、字符串、Spring对象的数据序列化及反序列化
-+ 支持基于img/Redis的JDKCollection实现
++ 支持基于Redis的JDKCollection实现
 
 ![image-20250201153714908](img/Redis/image-20250201153714908.png)
 
-#### SpringDataimg/Redis使用
+#### SpringDataRedis使用
 
 + 引入spring-boot-starter-data-redis依赖
 
@@ -858,7 +849,7 @@ SpringData是Spring中数据操作的模块，包含对各种数据库的集成�
 </dependency>
 ```
 
-+ 在application.yml配置img/Redis信息
++ 在application.yml配置Redis信息
 
 ```yaml
 spring:
@@ -875,14 +866,14 @@ spring:
           max-wait: 1000ms
 ```
 
-+ 注入img/RedisTemplate，使用
++ 注入RedisTemplate，使用
 
 ```java
 @SpringBootTest
-public class img/RedisDemoApplicationTests {
+public class RedisDemoApplicationTests {
 
     @Autowired
-    private img/RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
     @Test
     void testString(){
@@ -899,7 +890,7 @@ public class img/RedisDemoApplicationTests {
 
 
 
-#### SpringDataimg/Redis序列化方式
+#### SpringDataRedis序列化方式
 
 上边代码运行后实际上插入的key：
 
@@ -909,28 +900,28 @@ public class img/RedisDemoApplicationTests {
 ......
 ```
 
-img/RedisTemplate可以接收任意Object作为值写入img/Redis，只不过写入前会把Object序列化为字节形式，默认是采用JDK序列化，缺点是：可读性差、内存占用较大。
+RedisTemplate可以接收任意Object作为值写入Redis，只不过写入前会把Object序列化为字节形式，默认是采用JDK序列化，缺点是：可读性差、内存占用较大。
 
-#### 自定义img/RedisTemplate的序列化方式
+#### 自定义RedisTemplate的序列化方式
 
 ```java
 @Configuration
-public class img/RedisConfig {
+public class RedisConfig {
 
     @Bean
-    public img/RedisTemplate<String, Object> redisTemplate(img/RedisConnectionFactory connectionFactory){
-        // 创建img/RedisTemplate对象
-        img/RedisTemplate<String, Object> template = new img/RedisTemplate<>();
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory){
+        // 创建RedisTemplate对象
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         // 设置连接工厂
         template.setConnectionFactory(connectionFactory);
         // 创建JSON序列化工具
-        GenericJackson2Jsonimg/RedisSerializer jsonimg/RedisSerializer = new GenericJackson2Jsonimg/RedisSerializer();
+        GenericJackson2JsonRedisSerializer jsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
         // 设置Key的序列化
-        template.setKeySerializer(img/RedisSerializer.string());
-        template.setHashKeySerializer(img/RedisSerializer.string());
+        template.setKeySerializer(RedisSerializer.string());
+        template.setHashKeySerializer(RedisSerializer.string());
         // 设置Value的序列化
-        template.setValueSerializer(jsonimg/RedisSerializer);
-        template.setHashValueSerializer(jsonimg/RedisSerializer);
+        template.setValueSerializer(jsonRedisSerializer);
+        template.setHashValueSerializer(jsonRedisSerializer);
         // 返回
         return template;
     }
@@ -939,10 +930,10 @@ public class img/RedisConfig {
 
 ```java
 @SpringBootTest
-class img/RedisDemoApplicationTests {
+class RedisDemoApplicationTests {
 
     @Autowired
-    private img/RedisTemplate<String,Object> redisTemplate;
+    private RedisTemplate<String,Object> redisTemplate;
 
     @Test
     void testString() {
@@ -976,25 +967,25 @@ class img/RedisDemoApplicationTests {
 
 
 
-#### Stringimg/RedisTemplate
+#### StringRedisTemplate
 
 为了节省内存空间，并不会使用JSON序列化器来处理value，而是统一使用String序列化器，要求只能存储String类型的key和value。当需要存储Java对象时，手动完成对象的序列化和反序列化。
 
-Spring默认提供了一个Stringimg/RedisTemplate类，它的key和value的序列化方式默认就是String方式。
+Spring默认提供了一个StringRedisTemplate类，它的key和value的序列化方式默认就是String方式。
 
 ```java
 @SpringBootTest
-class img/RedisStringTests {
+class RedisStringTests {
 
     @Autowired
-    private Stringimg/RedisTemplate stringimg/RedisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Test
     void testString() {
         // 写入一条String数据
-        stringimg/RedisTemplate.opsForValue().set("verify:phone:13600527634", "124143");
+        stringRedisTemplate.opsForValue().set("verify:phone:13600527634", "124143");
         // 获取string数据
-        Object name = stringimg/RedisTemplate.opsForValue().get("name");
+        Object name = stringRedisTemplate.opsForValue().get("name");
         System.out.println("name = " + name);
     }
 
@@ -1007,10 +998,10 @@ class img/RedisStringTests {
         // 手动序列化
         String json = mapper.writeValueAsString(user);
         // 写入数据
-        stringimg/RedisTemplate.opsForValue().set("user:200", json);
+        stringRedisTemplate.opsForValue().set("user:200", json);
 
         // 获取数据
-        String jsonUser = stringimg/RedisTemplate.opsForValue().get("user:200");
+        String jsonUser = stringRedisTemplate.opsForValue().get("user:200");
         // 手动反序列化
         User user1 = mapper.readValue(jsonUser, User.class);
         System.out.println("user1 = " + user1);
@@ -1018,10 +1009,10 @@ class img/RedisStringTests {
 
     @Test
     void testHash() {
-        stringimg/RedisTemplate.opsForHash().put("user:400", "name", "虎哥");
-        stringimg/RedisTemplate.opsForHash().put("user:400", "age", "21");
+        stringRedisTemplate.opsForHash().put("user:400", "name", "虎哥");
+        stringRedisTemplate.opsForHash().put("user:400", "age", "21");
 
-        Map<Object, Object> entries = stringimg/RedisTemplate.opsForHash().entries("user:400");
+        Map<Object, Object> entries = stringRedisTemplate.opsForHash().entries("user:400");
         System.out.println("entries = " + entries);
     }
 
@@ -1029,7 +1020,7 @@ class img/RedisStringTests {
 
 ```
 
-# img/Redis实战
+# Redis实战
 
 ## 短信登录
 
@@ -1071,7 +1062,7 @@ class img/RedisStringTests {
 
 
 
-# img/Redis高级
+# Redis高级
 
 
 
@@ -1079,5 +1070,5 @@ class img/RedisStringTests {
 
 
 
-# img/Redis原理
+# Redis原理
 

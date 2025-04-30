@@ -1,18 +1,3 @@
----
-title: " 集成学习-投票法"
-description: 
-date: 2025-04-14T01:05:15+08:00
-image: 
-math: true
-mermaid: true
-license: false
-hidden: false
-comments: false
-draft: false
-categories:
-    - 机器学习
----
-
 # 集成学习---投票法（Voting）
 
 ## 集成学习

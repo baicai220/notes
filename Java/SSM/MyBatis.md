@@ -1,4 +1,4 @@
-# img/MyBatis概述
+#MyBatis概述
 
 ## 框架
 
@@ -12,7 +12,7 @@
 - 业务逻辑层（BLL）：一是处理表现层转发过来的前端请求（也就是具体业务），二是将从持久层获取的数据返回到表现层。
 - 数据访问层（DAL）：直接操作数据库完成CRUD，并将获得的数据返回到上一层（也就是业务逻辑层）。
 - Java持久层框架：
-   - img/MyBatis
+   - MyBatis
    - Hibernate（实现了JPA规范）
    - Spring Data（实现了JPA规范）
    - ......
@@ -100,9 +100,9 @@ while(rs.next()){
 
 
 
-## 了解img/MyBatis
+## 了解MyBatis
 
-- img/MyBatis本质上就是对JDBC的封装，通过img/MyBatis完成CRUD。
+- MyBatis本质上就是对JDBC的封装，通过MyBatis完成CRUD。
 - ORM：对象关系映射
    - O（Object）：Java虚拟机中的Java对象
    - R（Relational）：关系型数据库
@@ -110,8 +110,8 @@ while(rs.next()){
 
 ![001-ORM思想-对象关系映射](img/MyBatis/001-ORM思想-对象关系映射.png)
 
-# img/MyBatis入门
-## img/MyBatis入门程序
+# MyBatis入门
+## MyBatis入门程序
 
 - 步骤1：打包方式：jar（这不是web项目，打jar包即可）
 
@@ -191,11 +191,11 @@ while(rs.next()){
 <mapper resource="CarMapper.xml"/>
 ```
 
-- 步骤5：编写img/MyBatisIntroductionTest代码
+- 步骤5：编写MyBatisIntroductionTest代码
 
 
 ```java
-public class img/MyBatisIntroductionTest {
+public classMyBatisIntroductionTest {
      public static void main(String[] args) throws Exception {
 
         // 获取SqlSessionFactoryBuilder对象
@@ -231,7 +231,7 @@ InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStr
 将mybatis-config.xml文件拷贝一份放到D盘根下，然后编写以下程序：
 
 ```java
-public class img/MyBatisConfigFilePath {
+public classMyBatisConfigFilePath {
     public static void main(String[] args) throws Exception{
         // 1. 创建SqlSessionFactoryBuilder对象
         SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
@@ -270,7 +270,7 @@ InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("mybatis
 ## 完整的代码写法
 
 ```java
-public class img/MyBatisCompleteCodeTest {
+public classMyBatisCompleteCodeTest {
     public static void main(String[] args) {
         SqlSession sqlSession = null;
         try {
@@ -421,7 +421,7 @@ public void testInsertCar(){
 
 
 
-# 使用img/MyBatis完成CRUD
+# 使用MyBatis完成CRUD
 
 ## insert（Create）
 **将数据放到Map集合中**
@@ -831,7 +831,7 @@ jdbc.url=jdbc:mysql://localhost:3306/powernode
 
 
 
-# 手写img/MyBatis框架
+# 手写MyBatis框架
 
 ## dom4j解析XML文件
 
@@ -968,7 +968,7 @@ public void testSqlMapper() throws Exception{
 }
 ```
 执行结果：
-![41A93BE0-3374-4283-97DE-152288504BE3.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1660183887361-baffabf0-4caa-4e64-86d0-5d5dcfb1edd6.png#averageHue=%232d2c2c&clientId=u77faa741-d191-4&from=paste&height=232&id=ubad124f6&originHeight=232&originWidth=1487&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23737&status=done&style=none&taskId=ubf72afc9-79ef-4242-9275-606aa95feec&title=&width=1487)
+![41A93BE0-3374-4283-97DE-152288504BE3.png](img/MyBatis/1660183887361-baffabf0-4caa-4e64-86d0-5d5dcfb1edd6.png)
 
 
 
@@ -1772,7 +1772,7 @@ public Object selectOne(String sqlId, Object parameterObj){
 
 ## 使用GodBatis
 
-使用GodBatis就和使用img/MyBatis是一样的。
+使用GodBatis就和使用MyBatis是一样的。
 第一步：准备数据库表t_user
 ![96BB0AE2-0C47-4e24-AF86-E8B875B5B65A.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1660206701289-4ed4661b-7c85-4157-b09c-3a7fe5207399.png#averageHue=%23f7f6f6&clientId=u77faa741-d191-4&from=paste&height=264&id=uef3387dc&originHeight=264&originWidth=796&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12816&status=done&style=none&taskId=ufd123940-ed51-40c8-a680-18ad7e51c77&title=&width=796)
 第二步：创建模块，普通的Java Maven模块：godbatis-test
@@ -1959,7 +1959,7 @@ public class GodBatisTest {
 ![CD0A068F-8A77-4ced-B92F-B0CCA2412B3C.png](https://cdn.nlark.com/yuque/0/2022/png/21376908/1660209193124-908993c5-90d6-4426-a598-7aeac2a6b791.png#averageHue=%238b7760&clientId=u77faa741-d191-4&from=paste&height=195&id=uee2c9fb1&originHeight=195&originWidth=819&originalType=binary&ratio=1&rotation=0&showTitle=false&size=12996&status=done&style=none&taskId=u35b9af92-a008-4883-88b5-605a8697d9b&title=&width=819)
 
 
-## 总结img/MyBatis框架的重要实现原理
+## 总结MyBatis框架的重要实现原理
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -1982,7 +1982,7 @@ public class GodBatisTest {
 
 
 
-# 在WEB中应用img/MyBatis（使用MVC架构）
+# 在WEB中应用MyBatis（使用MVC架构）
 
 ![image-20250111203239319](img/MyBatis/image-20250111203239319.png)
 
@@ -2236,8 +2236,8 @@ public class AccountController extends HttpServlet {
 
 ```
 
-## img/MyBatis对象作用域以及事务问题
-### img/MyBatis核心对象的作用域
+## MyBatis对象作用域以及事务问题
+### MyBatis核心对象的作用域
 #### SqlSessionFactoryBuilder
 这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。 因此 SqlSessionFactoryBuilder 实例的最佳作用域是方法作用域（也就是局部方法变量）。 
 #### SqlSessionFactory
@@ -2381,7 +2381,7 @@ public class AccountServiceImpl implements AccountService {
 
 
 
-# img/MyBatis接口代理机制
+# MyBatis接口代理机制
 
 
 
@@ -2545,7 +2545,7 @@ private AccountDao accountDao = (AccountDao) GenerateDaoProxy.generate(SqlSessio
 
 
 
-## img/MyBatis中接口代理使用
+## MyBatis中接口代理使用
 上面的内容mybatis内部已经实现了。直接调用以下代码即可获取dao接口的代理类：
 ```java
 AccountDao accountDao = (AccountDao)sqlSession.getMapper(AccountDao.class);
@@ -2559,7 +2559,7 @@ private AccountDao accountDao = SqlSessionUtil.openSession().getMapper(AccountDa
 
 
 
-# img/MyBatis小技巧
+# MyBatis小技巧
 
 ## `#{}`和`${}`
 
@@ -2928,7 +2928,7 @@ public void testInsertUseGeneratedKeys(){
 
 
 
-# img/MyBatis参数处理
+# MyBatis参数处理
 
 
 
@@ -3206,7 +3206,7 @@ map.put("param2", sex);
 
 
 
-# img/MyBatis查询返回
+# MyBatis查询返回
 
 ## 返回Car
 当查询的结果，有对应的实体类，并且查询结果只有一条时：
@@ -3867,7 +3867,7 @@ include标签用来将声明的sql片段包含到某个sql语句当中
 
 
 
-# img/MyBatis的高级映射及延迟加载
+# MyBatis的高级映射及延迟加载
 
 前面的都是低级映射，即数据存储在一张数据表，且映射到JVM中的一个对象
 
@@ -4196,7 +4196,7 @@ List<Student> selectByCid(Integer cid);
 - 第二种：`<setting name="lazyLoadingEnabled" value="true"/>`，开启全局延迟加载，想让某个sql不使用延迟加载：fetchType="eager"
 
 
-# img/MyBatis的缓存
+# MyBatis的缓存
 mybatis的缓存：将select语句的查询结果放到缓存（内存）当中，下一次还是这条select语句的话，直接从缓存中取，不再查数据库。一方面是减少了IO。另一方面不再执行繁琐的查找算法。效率大大提升。
 mybatis缓存包括：
 
@@ -4332,7 +4332,7 @@ public void testSelectById2() throws Exception{
 4. size：
    1. 设置二级缓存中最多可存储的java对象数量。默认值1024。
 
-## img/MyBatis集成EhCache
+## MyBatis集成EhCache
 集成EhCache是为了代替mybatis自带的二级缓存。一级缓存是无法替代的。
 EhCache是Java写的，所以mybatis集成EhCache较为常见。
 第一步：引入mybatis整合ehcache的依赖。
@@ -4394,7 +4394,7 @@ public void testSelectById2() throws Exception{
 ```
 
 
-# img/MyBatis的逆向工程
+# MyBatis的逆向工程
 所谓的逆向工程是：根据数据库表逆向生成Java的pojo类，SqlMapper.xml文件，以及Mapper接口类等。
 
 
@@ -4436,10 +4436,10 @@ public void testSelectById2() throws Exception{
 <generatorConfiguration>
     <!--
         targetRuntime有两个值：
-            img/MyBatis3Simple：生成的是基础版，只有基本的增删改查。
-            img/MyBatis3：生成的是增强版，除了基本的增删改查之外还有复杂的增删改查。
+           MyBatis3Simple：生成的是基础版，只有基本的增删改查。
+           MyBatis3：生成的是增强版，除了基本的增删改查之外还有复杂的增删改查。
     -->
-    <context id="DB2Tables" targetRuntime="img/MyBatis3">
+    <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--防止生成重复代码-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
       
@@ -4491,7 +4491,7 @@ public void testSelectById2() throws Exception{
 
 
 
-# img/MyBatis使用PageHelper
+# MyBatis使用PageHelper
 ## limit分页
 
 mysql的limit后面两个数字：
@@ -4626,7 +4626,7 @@ PageInfo{
 }
 ```
 
-# img/MyBatis的注解式开发
+# MyBatis的注解式开发
 简单sql可以注解。复杂sql使用xml。
 
 ## @Insert
