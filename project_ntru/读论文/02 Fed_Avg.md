@@ -1,9 +1,5 @@
 # Fed_Avg
 
-```txt
-Mcmahan H B , Moore E , Ramage D ,et al.Communication-Efficient Learning of Deep Networks from Decentralized Data[J].  2016.DOI:10.48550/arXiv.1602.05629.  
-```
-
 
 
 ## 算法原理
@@ -32,11 +28,11 @@ for 每轮$t = 1,2,\dots$, do
 
 ​	$m \leftarrow \max(C \cdot K, 1)$ 	// $C$为比例系数
 
-​	$S_t \leftarrow$ (随机选取$m$个客户端)
+   $S_t \leftarrow$ (随机选取$m$个客户端)
 
-​	for 每个客户端$k \in S_t$同时 do
+   for 每个客户端$k \in S_t$同时 do
 
-​		$w_{t + 1}^k \leftarrow$ 客户端更新$(k, w_t)$
+​       $w_{t + 1}^k \leftarrow$ 客户端更新$(k, w_t)$
 
 ​		$w_{t+1}\leftarrow\sum_{k = 1}^{K}\frac{n_k}{n}w_{t + 1}^k$  // $n_k$为客户机$k$上的样本数量，$n$为所有被选中客户机的总样本数量
 
