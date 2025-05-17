@@ -14,9 +14,7 @@ $$ w_{t+1} \leftarrow \sum_{k = 1}^{K} \frac{n_k}{n} w_{t + 1}^k $$ 	// $n_k$为
 
 
 
-**【伪代码】**
-
-**算法: Federated Averaging算法（FedAvg）**。
+**FedAvg步骤：**
 
 $K$个客户端编号为$1...k$；$B$，$E$，$\eta$ 分别代表本地的minibatch size，epochs，学习率learning rate
 
